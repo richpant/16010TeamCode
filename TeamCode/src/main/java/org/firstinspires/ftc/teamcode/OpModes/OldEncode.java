@@ -26,7 +26,7 @@ public class OldEncode extends LinearOpMode {
         leftRear = hardwareMap.get(DcMotor.class, "leftRear");
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
         rightRear = hardwareMap.get(DcMotor.class, "rightRear");
-        flipper = hardwareMap.get(Servo.class,"flipper");
+        //flipper = hardwareMap.get(Servo.class,"flipper");
         liftMotor = hardwareMap.get(DcMotor.class,"liftMotor");
         rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
         rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -37,15 +37,15 @@ public class OldEncode extends LinearOpMode {
             richmove(1000, 1000, 1000, 1000);
             richmove(-1000, -1000, 1000, 1000);
             richmove(1000, 1000, 1000, 1000);
-            lift(1000);
+            //lift(1000);
             richmove(1000, 1000, -1000, -1000);
-           lift(-1000);
+          lift(-1000);
             richmove(0, 0, 0, 0);
-            flipper.setPosition(1.0);
-            flipper.setPosition(0.5);
-            flipper.setPosition(0.0);
+            //flipper.setPosition(1.0);
+            //flipper.setPosition(0.5);
+            //flipper.setPosition(0.0);
             richmove(1000, 1000, 1000, 1000);
-            flipper.setPosition(0.5);
+            //flipper.setPosition(0.5);
 
 
 

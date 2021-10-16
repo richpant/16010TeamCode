@@ -113,7 +113,7 @@ public class POVDrive extends OpMode{
             clawOffset -= CLAW_SPEED;
 
         // Move both servos to new position.  Assume servos are mirror image of each other.
-        clawOffset = Range.clip(clawOffset, -0.5, 0.5);
+       /* clawOffset = Range.clip(clawOffset, -0.5, 0.5);
         robot.flipper.setPosition(robot.MID_SERVO + clawOffset);
 
 
@@ -128,7 +128,7 @@ public class POVDrive extends OpMode{
         // Send telemetry message to signify robot running;
         telemetry.addData("claw",  "Offset = %.2f", clawOffset);
         telemetry.addData("left",  "%.2f", left);
-        telemetry.addData("right", "%.2f", right);
+        telemetry.addData("right", "%.2f", right);*/
     }
 
     /*
