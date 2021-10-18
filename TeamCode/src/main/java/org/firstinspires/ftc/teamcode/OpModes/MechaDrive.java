@@ -13,7 +13,6 @@ public class MechaDrive extends OpMode {
     private DcMotor rightRear;
     private DcMotor leftFront;
     private DcMotor leftRear;
-   // private Servo flipper;
     private DcMotor liftMotor;
     public static final double MID_SERVO       =  0.5 ;
     public static final double LIFT_UP_POWER    =  0.45 ;
@@ -26,7 +25,8 @@ public class MechaDrive extends OpMode {
         leftRear = hardwareMap.get(DcMotor.class, "leftRear");
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
         rightRear = hardwareMap.get(DcMotor.class, "rightRear");
-      //  flipper = hardwareMap.get(Servo.class,"flipper");
+
+
         liftMotor = hardwareMap.get(DcMotor.class,"liftMotor");
         // rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
         // rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -55,6 +55,13 @@ public class MechaDrive extends OpMode {
             leftRear.setPower(0);
             leftFront.setPower(0);
         }
+        // Use gamepad buttons to move the arm up (Y) and down (A)
+        if (gamepad1.y)
+            liftMotor.setPower(LIFT_UP_POWER);
+        else if (gamepad1.a)
+            liftMotor.setPower(LIFT_DOWN_POWER);
+        else
+            liftMotor.setPower(0.0);
 
     }
 
