@@ -40,38 +40,10 @@ public class MechaDrive extends OpMode {
     }
     @Override
     public void loop() {
-        double left;
-        double right;
-        double rf = -gamepad1.right_stick_y -gamepad1.right_stick_x -gamepad1.left_stick_x;
-        double rr = -gamepad1.right_stick_y + gamepad1.right_stick_x -gamepad1.left_stick_x;
-        double lf = gamepad1.right_stick_y + gamepad1.right_stick_x  -gamepad1.left_stick_x;
-        double lr = gamepad1.right_stick_y -gamepad1.right_stick_x -gamepad1.left_stick_x;
-        if(Math.abs(rf) >= 0.1 || Math.abs(rr) >= 0.1 || Math.abs(lf) >= 0.1 || Math.abs(lr) >= 0.1){
-            rightFront.setPower(rf);
-            rightRear.setPower(rr);
-            leftRear.setPower(lr);
-            leftFront.setPower(lf);
-        }
-        else{
-            rightFront.setPower(0);
-            rightRear.setPower(0);
-            leftRear.setPower(0);
-            leftFront.setPower(0);
-        }
-        // Use gamepad buttons to move the arm up (Y) and down (A)
-        if (gamepad2.right_bumper)
-            liftMotor.setPower(LIFT_UP_POWER);
-        else if (gamepad2.left_bumper)
-            liftMotor.setPower(LIFT_DOWN_POWER);
-        else
-            liftMotor.setPower(0.0);
-        // Use gamepad buttons to move the arm up (A) and down (Y)
-        if (gamepad2.a)
-            liftMotor.setPower(LIFT_UP_POWER);
-        else if (gamepad2.y)
-            liftMotor.setPower(LIFT_DOWN_POWER);
-        else
-            liftMotor.setPower(0.0);
+        drive();
+        carousel();
+        intake();
+        lift();
 
 
     }
@@ -82,4 +54,57 @@ public class MechaDrive extends OpMode {
     @Override
     public void stop() {
     }
-}
+    //-----------------------DRIVE------------------
+    public void drive() {
+        double left;
+        double right;
+        double rf = -gamepad1.right_stick_y - gamepad1.right_stick_x - gamepad1.left_stick_x;
+        double rr = -gamepad1.right_stick_y + gamepad1.right_stick_x - gamepad1.left_stick_x;
+        double lf = gamepad1.right_stick_y + gamepad1.right_stick_x - gamepad1.left_stick_x;
+        double lr = gamepad1.right_stick_y - gamepad1.right_stick_x - gamepad1.left_stick_x;
+        if (Math.abs(rf) >= 0.1 || Math.abs(rr) >= 0.1 || Math.abs(lf) >= 0.1 || Math.abs(lr) >= 0.1) {
+            rightFront.setPower(rf);
+            rightRear.setPower(rr);
+            leftRear.setPower(lr);
+            leftFront.setPower(lf);
+        } else {
+            rightFront.setPower(0);
+            rightRear.setPower(0);
+            leftRear.setPower(0);
+            leftFront.setPower(0);
+        }
+    }
+        //-----------------------------------CARRY------------
+        private void carousel () {
+            if (gamepad2.a)
+                carry.setPower(0.6);
+            else if (gamepad2.y)
+                carry.setPower(-0.6);
+            else
+                carry.setPower(0.0);
+        }
+//----------------INTAKE--------------
+public void intake(){
+
+    if(gamepad2.right_trigger>=0.1){
+        twist.setPower( .4);
+    }
+
+    else if(gamepad2.left_trigger>=0.1){
+        twist.setPower(-.4);
+    }
+    else {
+        twist.setPower(0);
+    }
+
+    }
+    public void lift()
+    {
+        if (gamepad2.right_bumper)
+            liftMotor.setPower(LIFT_UP_POWER);
+        else if (gamepad2.left_bumper)
+            liftMotor.setPower(LIFT_DOWN_POWER);
+        else
+            liftMotor.setPower(0.0);
+    }
+    }
