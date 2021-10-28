@@ -14,7 +14,7 @@ public class MechaDrive extends OpMode {
     private DcMotor leftFront;
     private DcMotor leftRear;
     private DcMotor liftMotor;
-    private DcMotor twist;
+    //private Servo twist;
     private DcMotor carry;
     public static final double MID_SERVO       =  0.5 ;
     public static final double LIFT_UP_POWER    =  0.45 ;
@@ -27,12 +27,10 @@ public class MechaDrive extends OpMode {
         leftRear = hardwareMap.get(DcMotor.class, "leftRear");
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
         rightRear = hardwareMap.get(DcMotor.class, "rightRear");
-        twist = hardwareMap.get(DcMotor.class, "twist");
+       //twist = hardwareMap.get(Servo.class, "twist");
         carry = hardwareMap.get(DcMotor.class, "carry");
 
         liftMotor = hardwareMap.get(DcMotor.class,"liftMotor");
-        // rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
-        // rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
         int pos = 0;
         int pos2 = 0;
 
@@ -42,7 +40,7 @@ public class MechaDrive extends OpMode {
     public void loop() {
         drive();
         carousel();
-        intake();
+        //intake();
         lift();
 
 
@@ -84,20 +82,20 @@ public class MechaDrive extends OpMode {
                 carry.setPower(0.0);
         }
 //----------------INTAKE--------------
-public void intake(){
-
-    if(gamepad2.right_trigger>=0.1){
-        twist.setPower( .4);
-    }
-
-    else if(gamepad2.left_trigger>=0.1){
-        twist.setPower(-.4);
-    }
-    else {
-        twist.setPower(0);
-    }
-
-    }
+//public void intake(){
+//
+//    if(gamepad2.right_trigger>=0.1){
+//        twist.setPower( .4);
+//    }
+//
+//    else if(gamepad2.left_trigger>=0.1){
+//        twist.setPower(-.4);
+//    }
+//    else {
+//        twist.setPower(0);
+//    }
+//
+//    }
     public void lift()
     {
         if (gamepad2.right_bumper)
