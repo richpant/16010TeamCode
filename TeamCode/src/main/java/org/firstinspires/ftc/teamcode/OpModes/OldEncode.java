@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.CRServo;
 
 @Autonomous
 
@@ -15,7 +15,7 @@ public class OldEncode extends LinearOpMode {
     private DcMotor rightRear;
     private DcMotor leftFront;
     private DcMotor leftRear;
-    //private Servo flipper;
+    private CRServo twist;
     private DcMotor liftMotor;
 
     @Override
@@ -26,7 +26,7 @@ public class OldEncode extends LinearOpMode {
         leftRear = hardwareMap.get(DcMotor.class, "leftRear");
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
         rightRear = hardwareMap.get(DcMotor.class, "rightRear");
-        //flipper = hardwareMap.get(Servo.class,"flipper");
+        twist = hardwareMap.get(CRServo.class, "twist");
         liftMotor = hardwareMap.get(DcMotor.class,"liftMotor");
         leftRear.setDirection(DcMotorSimple.Direction.REVERSE);
         leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
