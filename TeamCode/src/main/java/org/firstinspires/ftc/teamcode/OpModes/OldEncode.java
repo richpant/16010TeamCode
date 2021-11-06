@@ -15,7 +15,7 @@ public class OldEncode extends LinearOpMode {
     private DcMotor rightRear;
     private DcMotor leftFront;
     private DcMotor leftRear;
-    private Servo flipper;
+    //private Servo flipper;
     private DcMotor liftMotor;
 
     @Override
@@ -28,69 +28,19 @@ public class OldEncode extends LinearOpMode {
         rightRear = hardwareMap.get(DcMotor.class, "rightRear");
         //flipper = hardwareMap.get(Servo.class,"flipper");
         liftMotor = hardwareMap.get(DcMotor.class,"liftMotor");
-        rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
-        rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftRear.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
 
         waitForStart();
 
         while (opModeIsActive()) {
             richmove(1000, 1000, 1000, 1000);
-            richmove(-1000, -1000, 1000, 1000);
-            richmove(1000, 1000, 1000, 1000);
-            //lift(1000);
             richmove(1000, 1000, -1000, -1000);
-          lift(-1000);
+            lift(200);
             richmove(0, 0, 0, 0);
-            //flipper.setPosition(1.0);
-            //flipper.setPosition(0.5);
-            //flipper.setPosition(0.0);
             richmove(1000, 1000, 1000, 1000);
-            //flipper.setPosition(0.5);
-
-
-
 
             sleep(4000);
-            /*rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-            rightFront.setTargetPosition(3000);
-            rightRear.setTargetPosition(3000);
-            leftFront.setTargetPosition(-3000);
-            leftRear.setTargetPosition(-3000);
-
-            rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            rightRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            leftRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-
-
-            rightRear.setPower(0.6);
-            rightFront.setPower(0.6);
-            leftFront.setPower(0.6);
-            leftRear.setPower(0.6);
-
-           // leftFront.setPower(leftFront/ Math.abs(.6));
-            //leftRear.setPower(lb/(Math.abs(lb)));
-
-            while(leftFront.isBusy() && leftRear.isBusy() && rightFront.isBusy() && rightRear.isBusy()){
-                sleep(50);
-
-            }
-            rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-            rightRear.setPower(0);
-            leftFront.setPower(0);
-            rightFront.setPower(0);
-            leftRear.setPower(0);
-*/
-
 
         }
 
@@ -158,4 +108,3 @@ public class OldEncode extends LinearOpMode {
 
     }
 }
-
