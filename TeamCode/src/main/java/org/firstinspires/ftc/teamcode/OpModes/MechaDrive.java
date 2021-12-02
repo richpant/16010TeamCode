@@ -15,7 +15,7 @@ public class MechaDrive extends OpMode {
     private DcMotor leftFront;
     private DcMotor leftRear;
     private DcMotor liftMotor;
-    private CRServo twist;
+    private DcMotor twist;
     private DcMotor carry;
     public static final double MID_SERVO       =  0.5 ;
     public static final double LIFT_UP_POWER    =  0.45 ;
@@ -28,7 +28,7 @@ public class MechaDrive extends OpMode {
         leftRear = hardwareMap.get(DcMotor.class, "leftRear");
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
         rightRear = hardwareMap.get(DcMotor.class, "rightRear");
-       twist = hardwareMap.get(CRServo.class, "twist");
+       twist = hardwareMap.get(DcMotor.class, "twist");
         carry = hardwareMap.get(DcMotor.class, "carry");
         leftRear.setDirection(DcMotorSimple.Direction.REVERSE);
         leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -76,9 +76,9 @@ public class MechaDrive extends OpMode {
     }
         //-----------------------------------CARRY------------
         private void carousel () {
-            if (gamepad2.a)
+            if (gamepad2.right_bumper)
                 carry.setPower(0.5);
-            else if (gamepad2.y)
+            else if (gamepad2.left_bumper)
                 carry.setPower(-0.5);
             else
                 carry.setPower(0.0);
@@ -87,11 +87,11 @@ public class MechaDrive extends OpMode {
 public void intake(){
 
     if(gamepad2.right_trigger>=0.1){
-        twist.setPower( .4);
+        twist.setPower( .6);
     }
 
     else if(gamepad2.left_trigger>=0.1){
-        twist.setPower(-.4);
+        twist.setPower(-.6);
     }
     else {
         twist.setPower(0);
@@ -100,9 +100,9 @@ public void intake(){
     }
     public void lift()
     {
-        if (gamepad2.right_bumper)
+        if (gamepad2.a)
             liftMotor.setPower(LIFT_UP_POWER);
-        else if (gamepad2.left_bumper)
+        else if (gamepad2.y)
             liftMotor.setPower(LIFT_DOWN_POWER);
         else
             liftMotor.setPower(0.0);

@@ -18,6 +18,7 @@ public class OldEncode extends LinearOpMode {
     private CRServo twist;
     private DcMotor liftMotor;
 
+
     @Override
 
 
@@ -36,11 +37,10 @@ public class OldEncode extends LinearOpMode {
         while (opModeIsActive()) {
             richmove(1000, 1000, 1000, 1000);
             richmove(1000, 1000, -1000, -1000);
-            lift(200);
+            //lift(200);
             richmove(0, 0, 0, 0);
             richmove(1000, 1000, 1000, 1000);
-
-            sleep(4000);
+            richmove(0, 0, 0, 0);
 
         }
 
